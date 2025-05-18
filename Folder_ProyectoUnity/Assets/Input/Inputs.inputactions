@@ -13,6 +13,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Desplazamiento",
+                    "type": "Value",
+                    "id": "44405ff1-9477-4b66-b1ef-fce11ff998f3",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -70,6 +79,17 @@
                     "action": "Movimientos",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "905ba4f6-0ce4-4280-a57a-94580d95af8d",
+                    "path": "<Mouse>/scroll",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Desplazamiento",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
