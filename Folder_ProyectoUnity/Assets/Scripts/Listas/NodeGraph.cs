@@ -5,7 +5,7 @@ public class NodeGraph<T>
 {
     public T Value { get; set; }
     public List<NodeGraph<T>> Neighbors { get; private set; }
-    public object Key { get; set; }  // clave genérica
+    public object Key { get; set; }  
 
     public NodeGraph(T value)
     {
