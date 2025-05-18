@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class ItemsInformation : ScriptableObject
 {
-    public GameObject ItemObject;
+    public Transform ItemTranform;
     public Sprite ItemSprite;
+    public Vector3 ItemRotation;
+
+    public void UpdateRotation()
+    {
+        ItemTranform.transform.localRotation = Quaternion.Euler(ItemRotation.x, ItemRotation.y, ItemRotation.z);
+    }
 }

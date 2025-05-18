@@ -6,10 +6,10 @@ public class Linterna : MonoBehaviour
 
     private void Awake()
     {
-        linterna.ItemObject = this.gameObject;
+        linterna.ItemTranform = this.transform;
     }
     private void Start()
     {
-        print(linterna.ItemObject.name);
+        print(linterna.ItemTranform.name);
     }
 }
