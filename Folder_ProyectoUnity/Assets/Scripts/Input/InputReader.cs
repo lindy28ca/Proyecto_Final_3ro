@@ -6,6 +6,7 @@ public class InputReader : MonoBehaviour
 {
     public static event Action<Vector2> OnMovePlayer;
     public static event Action<Vector2> OnScroll;
+    public static event Action OnSeeList;
     public void InputMovePlayer(InputAction.CallbackContext context)
     {
         OnMovePlayer?.Invoke(context.ReadValue<Vector2>());
@@ -16,6 +17,13 @@ public class InputReader : MonoBehaviour
         {
             OnScroll?.Invoke(context.ReadValue<Vector2>());
             print(context.ReadValue<Vector2>());
+        }
+    }
+    public void InputSeeList(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            OnSeeList?.Invoke();
         }
     }
 }
