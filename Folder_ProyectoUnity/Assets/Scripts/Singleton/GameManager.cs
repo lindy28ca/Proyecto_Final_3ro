@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     [SerializeField] private Transform[] newposition;
     [SerializeField] private ItemsInformation[] itemsInformation;
+    [SerializeField] private Inventory inventario;
     private void Awake()
     {
         if(Instance != null && Instance != this)
@@ -25,5 +26,9 @@ public class GameManager : MonoBehaviour
             int positionArray = Random.Range(0, newposition.Length);
             itemsInformation[i].ItemTranform.position = newposition[positionArray].position;
         }
+    }
+    public void AddInventory(ItemsInformation informacion)
+    {
+        inventario.Add(informacion);
     }
 }

@@ -8,6 +8,7 @@ public class InputReader : MonoBehaviour
     public static event Action<Vector2> OnScroll;
     public static event Action OnSeeList;
     public static event Action Onflashlight;
+    public static event Action OnInteractive;
 
     public void InputMovePlayer(InputAction.CallbackContext context)
     {
@@ -33,6 +34,13 @@ public class InputReader : MonoBehaviour
         if (context.performed)
         {
             Onflashlight?.Invoke();
+        }
+    }
+    public void InputInteractive(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            OnInteractive?.Invoke();
         }
     }
 }

@@ -1,4 +1,5 @@
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +26,10 @@ public class Inventory : MonoBehaviour
     public void Add(ItemsInformation information)
     {
         listaCircular.Add(information);
+        information.ItemTranform.position = tarjet.position;
+        information.ItemTranform.SetParent(tarjet);
+        information.UpdateRotation();
+        UpdateImages();
     }
     private void Next()
     {
