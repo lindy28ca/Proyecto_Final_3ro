@@ -5,7 +5,7 @@ using System;
 public class InputReader : MonoBehaviour
 {
     public static event Action<Vector2> OnMovePlayer;
-    public static event Action<Vector2> OnScroll;
+    public static event Action<float> OnScroll;
     public static event Action OnSeeList;
     public static event Action Onflashlight;
     public static event Action OnInteractive;
@@ -18,8 +18,7 @@ public class InputReader : MonoBehaviour
     {
         if (context.performed)
         {
-            OnScroll?.Invoke(context.ReadValue<Vector2>());
-            print(context.ReadValue<Vector2>());
+            OnScroll?.Invoke(context.ReadValue<Vector2>().normalized.y);
         }
     }
     public void InputSeeList(InputAction.CallbackContext context)
