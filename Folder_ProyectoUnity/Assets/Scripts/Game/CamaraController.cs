@@ -21,9 +21,12 @@ public class CamaraController : MonoBehaviour
         }
         else
         {
-            objectInteractive.DesactiveInput();
-            objectInteractive = null;
-            isInteractive = false;
+            if (objectInteractive != null)
+            {
+                objectInteractive.DesactiveInput();
+                objectInteractive = null;
+                isInteractive = false;
+            }
         }
     }
     private void OnDrawGizmos()

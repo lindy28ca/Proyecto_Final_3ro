@@ -1,5 +1,3 @@
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,7 +18,7 @@ public class Inventory : MonoBehaviour
             itemInformation[i].ItemTranform.SetParent(tarjet);
             itemInformation[i].UpdateRotation();
         }
-        currentNode = new Node<ItemsInformation>(itemInformation[0]);
+        currentNode = listaCircular.Head;
         UpdateImages();
     }
     public void Add(ItemsInformation information)
@@ -29,27 +27,23 @@ public class Inventory : MonoBehaviour
         information.ItemTranform.position = tarjet.position;
         information.ItemTranform.SetParent(tarjet);
         information.UpdateRotation();
+        information.ItemTranform.gameObject.SetActive(false);
         UpdateImages();
     }
     private void Next()
     {
         currentNode = currentNode.Next;
-        UpdateImages();
     }
     private void Previous()
     {
         currentNode = currentNode.Prev;
-        UpdateImages();
     }
     private void UpdateImages()
     {
-        if (currentNode == null) return;
-
         Node<ItemsInformation> tempNode = currentNode;
-
         for (int i = 0; i < image.Length; i++)
         {
-            if (tempNode != null)
+            if (tempNode != currentNode)
             {
                 image[i].sprite = tempNode.Value.ItemSprite;
                 tempNode = tempNode.Next;
@@ -60,15 +54,19 @@ public class Inventory : MonoBehaviour
             }
         }
     }
-    public void GetInputScroll(Vector2 valorInput)
+    public void GetInputScroll(float valorInput)
     {
-        if(valorInput.y < 0)
+        if (listaCircular.Count <= 1) return;
+        currentNode.Value.ItemTranform.gameObject.SetActive(false);
+        if (valorInput < 0)
         {
             Previous();
-        }else if(valorInput.y > 0)
+        }else if(valorInput > 0)
         {
             Next();
         }
+        currentNode.Value.ItemTranform.gameObject.SetActive(true);
+        UpdateImages();
     }
     private void OnEnable()
     {
