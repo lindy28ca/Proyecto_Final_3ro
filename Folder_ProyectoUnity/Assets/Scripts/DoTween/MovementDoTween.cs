@@ -4,6 +4,7 @@ using DG.Tweening;
 public class MovementDoTween : MonoBehaviour
 {
     [SerializeField] private Ease curve;
+    [SerializeField] private RectTransform final;
     private RectTransform rectTransform;
     private Vector2 originalPosition;
 
@@ -11,6 +12,10 @@ public class MovementDoTween : MonoBehaviour
     {
         rectTransform = GetComponent<RectTransform>();
         originalPosition = rectTransform.anchoredPosition;
+    }
+    private void Start()
+    {
+        Move(final.anchoredPosition,1.5f);
     }
 
     public void Move(Vector2 newPosition, float time)
