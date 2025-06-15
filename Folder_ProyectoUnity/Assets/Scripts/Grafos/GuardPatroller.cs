@@ -4,8 +4,12 @@ using System.Collections.Generic;
 
 public class GuardPatroller : MonoBehaviour
 {
-    public PatrolGraphInitializer graphInitializer;
-    public int startNodeIndex = 0;
+    [SerializeField] private PatrolGraphInitializer graphInitializer;
+    [SerializeField] private int startNodeIndex = 0;
+
+    [SerializeField] private float detectionRange = 10f;
+    [SerializeField] private float patrolSpeed = 3.5f;
+    [SerializeField] private float followSpeed = 6f;
 
     private NavMeshAgent agent;
     private List<int> patrolPath;
@@ -28,7 +32,28 @@ public class GuardPatroller : MonoBehaviour
 
     void Update()
     {
+        DetectPlayer();
         UpdateState();
+    }
+
+    private void DetectPlayer()
+    {
+        if(transformsPlayer == null)
+        {
+            return;
+        }
+        float distance = Vector3.Distance(transform.position, transformsPlayer.position);
+
+        if(distance <= detectionRange)
+        {
+            state = StateEnemy.Follow;
+            agent.speed = followSpeed;
+        }
+        else
+        {
+            state = StateEnemy.Patrol;
+            agent.speed = patrolSpeed;
+        }
     }
     private void UpdateState()
     {
@@ -72,6 +97,12 @@ public class GuardPatroller : MonoBehaviour
     {
         Patrol,
         Follow
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
     }
 }
 
