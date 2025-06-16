@@ -34,6 +34,11 @@ public class GuardPatroller : MonoBehaviour
     {
         DetectPlayer();
         UpdateState();
+
+        if (state == StateEnemy.Follow)
+        {
+            RotateTowardsPlayer();
+        }
     }
 
     private void DetectPlayer()
@@ -103,6 +108,18 @@ public class GuardPatroller : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRange);
+    }
+    private void RotateTowardsPlayer()
+    {
+        if (transformsPlayer == null)
+        {
+            return;
+        }
+
+        Vector3 direction = transformsPlayer.position - transform.position;
+        float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+
+        transform.rotation = Quaternion.Euler(0, angle, 0);
     }
 }
 

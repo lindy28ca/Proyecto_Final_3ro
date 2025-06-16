@@ -136,7 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   graphInitializer: {fileID: 0}
   startNodeIndex: 1
-  detectionRange: 10
+  detectionRange: 4
   patrolSpeed: 3.5
   followSpeed: 6
 --- !u!95 &8938268810611299969
