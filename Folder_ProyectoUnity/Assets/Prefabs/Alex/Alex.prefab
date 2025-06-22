@@ -135,7 +135,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graphInitializer: {fileID: 0}
-  startNodeIndex: 0
+  startNodeIndex: 1
+  detectionRange: 4
+  patrolSpeed: 3.5
+  followSpeed: 6
 --- !u!95 &8938268810611299969
 Animator:
   serializedVersion: 7

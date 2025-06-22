@@ -4,9 +4,18 @@ using System.Collections.Generic;
 
 public class GuardPatroller : MonoBehaviour
 {
+<<<<<<< HEAD
     public PatrolGraphInitializer graphInitializer;
     public int startNodeIndex = 0;
     public float attackRange = 2f;
+=======
+    [SerializeField] private PatrolGraphInitializer graphInitializer;
+    [SerializeField] private int startNodeIndex = 0;
+
+    [SerializeField] private float detectionRange = 10f;
+    [SerializeField] private float patrolSpeed = 3.5f;
+    [SerializeField] private float followSpeed = 6f;
+>>>>>>> 0a4e102fb8896e01a1515942a20b6382a5a7ef7e
 
     private Animator alex;
     private NavMeshAgent agent;
@@ -35,7 +44,33 @@ public class GuardPatroller : MonoBehaviour
 
     void Update()
     {
+        DetectPlayer();
         UpdateState();
+
+        if (state == StateEnemy.Follow)
+        {
+            RotateTowardsPlayer();
+        }
+    }
+
+    private void DetectPlayer()
+    {
+        if(transformsPlayer == null)
+        {
+            return;
+        }
+        float distance = Vector3.Distance(transform.position, transformsPlayer.position);
+
+        if(distance <= detectionRange)
+        {
+            state = StateEnemy.Follow;
+            agent.speed = followSpeed;
+        }
+        else
+        {
+            state = StateEnemy.Patrol;
+            agent.speed = patrolSpeed;
+        }
     }
 
     private void UpdateState()
@@ -117,5 +152,23 @@ public class GuardPatroller : MonoBehaviour
         Patrol,
         Follow,
         Attack
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
+    }
+    private void RotateTowardsPlayer()
+    {
+        if (transformsPlayer == null)
+        {
+            return;
+        }
+
+        Vector3 direction = transformsPlayer.position - transform.position;
+        float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+
+        transform.rotation = Quaternion.Euler(0, angle, 0);
     }
 }
