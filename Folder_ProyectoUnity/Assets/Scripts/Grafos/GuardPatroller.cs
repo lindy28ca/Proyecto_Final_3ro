@@ -4,18 +4,13 @@ using System.Collections.Generic;
 
 public class GuardPatroller : MonoBehaviour
 {
-<<<<<<< HEAD
-    public PatrolGraphInitializer graphInitializer;
-    public int startNodeIndex = 0;
     public float attackRange = 2f;
-=======
     [SerializeField] private PatrolGraphInitializer graphInitializer;
     [SerializeField] private int startNodeIndex = 0;
 
     [SerializeField] private float detectionRange = 10f;
     [SerializeField] private float patrolSpeed = 3.5f;
     [SerializeField] private float followSpeed = 6f;
->>>>>>> 0a4e102fb8896e01a1515942a20b6382a5a7ef7e
 
     private Animator alex;
     private NavMeshAgent agent;
