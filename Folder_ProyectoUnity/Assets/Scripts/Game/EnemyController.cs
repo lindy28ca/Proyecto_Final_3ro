@@ -11,21 +11,18 @@ public class EnemyController : MonoBehaviour
 
     void Awake()
     {
-        // Crear nodos con posiciones
         grafo.AddNodeGraph("A", new Vector3(0, 0, 0));
         grafo.AddNodeGraph("B", new Vector3(5, 0, 0));
         grafo.AddNodeGraph("C", new Vector3(5, 0, 5));
         grafo.AddNodeGraph("D", new Vector3(0, 0, 5));
 
-        // Conexiones
         grafo.AddEdge("A", "B");
         grafo.AddEdge("B", "C");
         grafo.AddEdge("C", "D");
-        grafo.AddEdge("D", "A"); // Patrulla cir
+        grafo.AddEdge("D", "A");
     }
     void Start()
     {
-        // Iniciar en nodo A
         nodoActual = "A";
         siguienteNodo = grafo.NodeGraphs[nodoActual].Neighbors[0].Value.ToString();
     }
