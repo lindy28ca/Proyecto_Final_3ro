@@ -11,13 +11,21 @@ public class CamaraController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Physics.Raycast(transform.position, transform.forward, out hit, distance, layerMask);
-
-        if (hit.collider != null && !isInteractive)
+        if (Physics.Raycast(transform.position, transform.forward, out hit, distance, layerMask))
         {
-            objectInteractive = hit.collider.GetComponent<ObjectInteractive>();
-            objectInteractive.ActiveInput();
-            isInteractive = true;
+            ObjectInteractive nuevoObjeto = hit.collider.GetComponent<ObjectInteractive>();
+
+            if (nuevoObjeto != null && nuevoObjeto != objectInteractive)
+            {
+                if (objectInteractive != null)
+                {
+                    objectInteractive.DesactiveInput(); // Desactiva el anterior
+                }
+
+                objectInteractive = nuevoObjeto;
+                objectInteractive.ActiveInput(); // Activa el nuevo
+                isInteractive = true;
+            }
         }
         else
         {
@@ -29,6 +37,8 @@ public class CamaraController : MonoBehaviour
             }
         }
     }
+
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

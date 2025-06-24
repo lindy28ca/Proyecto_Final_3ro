@@ -1,8 +1,6 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
-using DG.Tweening;
-
 
 public class UIManager : MonoBehaviour
 {
@@ -54,8 +52,6 @@ public class UIManager : MonoBehaviour
     public void StartAlarm(float time)
     {
         textAlarm.gameObject.SetActive(true);
-        textAlarm.transform.localScale = Vector3.zero;
-        textAlarm.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack);
 
         if (alarmCoroutine != null)
         {
@@ -67,8 +63,7 @@ public class UIManager : MonoBehaviour
 
     public void StopAlarm()
     {
-        textAlarm.transform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.InBack);
-        StartCoroutine(DisableTextAfterDelay(0.5f));
+        textAlarm.gameObject.SetActive(false);
 
         if (alarmCoroutine != null)
         {
@@ -81,16 +76,11 @@ public class UIManager : MonoBehaviour
     {
         while (time > 0)
         {
-            textAlarm.text = time.ToString("0");
+            textAlarm.text = time.ToString();
             yield return new WaitForSeconds(1f);
             time -= 1f;
         }
 
         alarmCoroutine = null;
-    }
-    private IEnumerator DisableTextAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        textAlarm.gameObject.SetActive(false);
     }
 }

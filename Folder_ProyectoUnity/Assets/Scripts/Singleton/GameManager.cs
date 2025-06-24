@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Inventory inventario;                      // Inventario
     [SerializeField] private Transform[] positionRamdom;                // Posiciones para objetos
     [SerializeField] private GameObject[] prefabs;                      // Prefabs a instanciar
+    private int objetosRecogidos = 0;
+    [SerializeField] private int totalObjetos = 7;
 
     private void Awake()
     {
@@ -49,7 +52,6 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("Hay más prefabs que posiciones, algunos se repetirán.");
         }
 
-        // Mezclar posiciones
         Transform[] posicionesMezcladas = new Transform[positionRamdom.Length];
         positionRamdom.CopyTo(posicionesMezcladas, 0);
 
@@ -61,11 +63,21 @@ public class GameManager : MonoBehaviour
             posicionesMezcladas[randomIndex] = temp;
         }
 
-        // Instanciar cada prefab en una posición
         for (int i = 0; i < prefabs.Length; i++)
         {
             Transform posicionAsignada = posicionesMezcladas[i % posicionesMezcladas.Length];
             Instantiate(prefabs[i], posicionAsignada.position, Quaternion.identity);
+        }
+    }
+    public void RecogerObjeto()
+    {
+        objetosRecogidos++;
+        Debug.Log("Objetos recogidos: " + objetosRecogidos);
+
+        if (objetosRecogidos >= totalObjetos)
+        {
+            Debug.Log("¡Ganaste! Cargando escena...");
+            SceneManager.LoadScene("Ganaste"); 
         }
     }
 }
