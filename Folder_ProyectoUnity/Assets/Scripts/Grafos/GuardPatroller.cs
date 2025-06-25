@@ -15,6 +15,7 @@ public class GuardPatroller : MonoBehaviour
 
     private StateEnemy state;
     private Transform transformsPlayer;
+    [SerializeField] private Collider puño;
 
     private void Awake()
     {
@@ -56,6 +57,8 @@ public class GuardPatroller : MonoBehaviour
                 {
                     float distance = Vector3.Distance(transform.position, transformsPlayer.position);
 
+                    LookAtPlayer();
+
                     if (distance <= attackRange)
                     {
                         state = StateEnemy.Attack;
@@ -73,6 +76,8 @@ public class GuardPatroller : MonoBehaviour
                 {
                     float distance = Vector3.Distance(transform.position, transformsPlayer.position);
 
+                    LookAtPlayer();
+
                     if (distance > attackRange)
                     {
                         state = StateEnemy.Follow;
@@ -84,6 +89,16 @@ public class GuardPatroller : MonoBehaviour
                     }
                 }
                 break;
+        }
+    }
+
+    private void LookAtPlayer()
+    {
+        Vector3 lookDirection = transformsPlayer.position - transform.position;
+        lookDirection.y = 0f; 
+        if (lookDirection != Vector3.zero)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookDirection), Time.deltaTime * 5f);
         }
     }
 
@@ -110,6 +125,16 @@ public class GuardPatroller : MonoBehaviour
             transformsPlayer = null;
             state = StateEnemy.Patrol;
         }
+    }
+
+    public void ActivarPuño()
+    {
+        puño.enabled = true;
+    }
+
+    public void DesactivarPuño()
+    {
+        puño.enabled = false;
     }
 
     private enum StateEnemy

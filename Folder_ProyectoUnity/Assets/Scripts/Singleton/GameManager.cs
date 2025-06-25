@@ -5,14 +5,16 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [SerializeField] private Transform[] newposition;                   // Posiciones para itemsInformation
-    [SerializeField] private ItemsInformation[] itemsInformation;       // Información de ítems
-    [SerializeField] private Inventory inventario;                      // Inventario
-    [SerializeField] private Transform[] positionRamdom;                // Posiciones para objetos
-    [SerializeField] private GameObject[] prefabs;                      // Prefabs a instanciar
+    [SerializeField] private Transform[] newposition;                  
+    [SerializeField] private ItemsInformation[] itemsInformation;       
+    [SerializeField] private Inventory inventario;                     
+    [SerializeField] private Transform[] positionRamdom;               
+    [SerializeField] private GameObject[] prefabs;                      
     private int objetosRecogidos = 0;
     [SerializeField] private int totalObjetos = 7;
 
+    [SerializeField] private float puntos;
+    [SerializeField] private Puntos puntosSO;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -30,7 +32,6 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
-        // Posicionar los ítems en posiciones aleatorias
         for (int i = 0; i < itemsInformation.Length; i++)
         {
             int positionArray = Random.Range(0, newposition.Length);
@@ -39,7 +40,10 @@ public class GameManager : MonoBehaviour
 
         InstanciarPrefabsEnPosiciones();
     }
-
+    private void Update()
+    {
+        puntos += Time.deltaTime;
+    }
     public void AddInventory(ItemsInformation informacion)
     {
         inventario.Add(informacion);
@@ -77,6 +81,7 @@ public class GameManager : MonoBehaviour
         if (objetosRecogidos >= totalObjetos)
         {
             Debug.Log("¡Ganaste! Cargando escena...");
+            puntosSO.AgregarPunto((int)puntos);
             SceneManager.LoadScene("Ganaste"); 
         }
     }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -27,6 +28,13 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         rb.linearVelocity = new Vector3(OnMoveDirection.x * speed, rb.linearVelocity.y, OnMoveDirection.z * speed);   
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Puñito"))
+        {
+            SceneManager.LoadScene("Perdiste");
+        }
     }
     private bool Comprobarpiso()
     {
