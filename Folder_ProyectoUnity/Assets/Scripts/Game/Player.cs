@@ -8,27 +8,39 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask layer;
 
     [Header("Características")]
-
-    [SerializeField]private float speed;
-    private Rigidbody rb;
-    private Vector3 OnMoveDirection;
-    private Vector2 OnMove;
+    [SerializeField] private float speed;
+    [SerializeField] private float gravity = -9.81f;
+    private Vector3 velocity;
+    private Vector3 moveDirection;
+    private Vector2 inputMove;
 
     [Header("Cámara")]
     [SerializeField] private Transform camaraPlayer;
 
+    private CharacterController controller;
+
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        controller = GetComponent<CharacterController>();
     }
+
     private void Update()
     {
-        OnMoveDirection = camaraPlayer.forward * OnMove.y + camaraPlayer.right * OnMove.x;
+        moveDirection = camaraPlayer.forward * inputMove.y + camaraPlayer.right * inputMove.x;
+        moveDirection.y = 0f;
+        controller.Move(moveDirection * speed * Time.deltaTime);
+
+        if (!ComprobarPiso())
+        {
+            velocity.y += gravity * Time.deltaTime;
+            controller.Move(velocity * Time.deltaTime);
+        }
+        else
+        {
+            velocity.y = 0f;
+        }
     }
-    private void FixedUpdate()
-    {
-        rb.linearVelocity = new Vector3(OnMoveDirection.x * speed, rb.linearVelocity.y, OnMoveDirection.z * speed);   
-    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Puñito"))
@@ -36,25 +48,30 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene("Perdiste");
         }
     }
-    private bool Comprobarpiso()
+
+    private bool ComprobarPiso()
     {
-        return Physics.Raycast(transform.position, Vector2.down,distance,layer);
+        return Physics.Raycast(transform.position, Vector3.down, distance, layer);
     }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawRay(transform.position, Vector2.down * distance);
+        Gizmos.DrawRay(transform.position, Vector3.down * distance);
     }
-    private void GetImput(Vector2 Input)
+
+    private void GetInput(Vector2 input)
     {
-        OnMove = Input;
+        inputMove = input;
     }
+
     private void OnEnable()
     {
-        InputReader.OnMovePlayer += GetImput;
+        InputReader.OnMovePlayer += GetInput;
     }
+
     private void OnDisable()
     {
-        InputReader.OnMovePlayer -= GetImput;
+        InputReader.OnMovePlayer -= GetInput;
     }
 }

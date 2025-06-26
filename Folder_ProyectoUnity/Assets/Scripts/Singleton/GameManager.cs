@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
         }
 
         InstanciarPrefabsEnPosiciones();
+     
     }
     private void Update()
     {

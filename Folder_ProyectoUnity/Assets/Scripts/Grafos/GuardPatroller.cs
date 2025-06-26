@@ -8,6 +8,8 @@ public class GuardPatroller : MonoBehaviour
     public int startNodeIndex = 0;
     public float attackRange = 2f;
 
+    [SerializeField] private List<int> customPath = new List<int>(); // Ruta personalizada opcional
+
     private Animator alex;
     private NavMeshAgent agent;
     private List<int> patrolPath;
@@ -26,7 +28,16 @@ public class GuardPatroller : MonoBehaviour
     {
         state = StateEnemy.Patrol;
         agent = GetComponent<NavMeshAgent>();
-        patrolPath = graphInitializer.graph.BFS(startNodeIndex);
+
+        // Usar ruta personalizada si está definida, de lo contrario usar BFS
+        if (customPath != null && customPath.Count > 0)
+        {
+            patrolPath = customPath;
+        }
+        else
+        {
+            patrolPath = graphInitializer.graph.BFS(startNodeIndex);
+        }
 
         if (patrolPath.Count > 0)
         {
@@ -95,7 +106,7 @@ public class GuardPatroller : MonoBehaviour
     private void LookAtPlayer()
     {
         Vector3 lookDirection = transformsPlayer.position - transform.position;
-        lookDirection.y = 0f; 
+        lookDirection.y = 0f;
         if (lookDirection != Vector3.zero)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookDirection), Time.deltaTime * 5f);
@@ -124,6 +135,7 @@ public class GuardPatroller : MonoBehaviour
         {
             transformsPlayer = null;
             state = StateEnemy.Patrol;
+            GoToNextNode(); // Retomar patrullaje
         }
     }
 

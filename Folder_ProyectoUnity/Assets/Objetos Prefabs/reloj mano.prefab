@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4638889897683675074
+--- !u!1 &7298806310133505739
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,12 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5489012683983189831}
-  - component: {fileID: 8783668437287311470}
-  - component: {fileID: 5677478317546137250}
-  - component: {fileID: -6148062263009197011}
-  - component: {fileID: 1887124579477642311}
-  - component: {fileID: 8580388375435827550}
+  - component: {fileID: 2780322385459003392}
+  - component: {fileID: 2535487184626355137}
+  - component: {fileID: 2821778246929835384}
+  - component: {fileID: 2015229632496059956}
+  - component: {fileID: 493381997410800358}
   m_Layer: 9
   m_Name: reloj mano
   m_TagString: Untagged
@@ -21,36 +20,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5489012683983189831
+--- !u!4 &2780322385459003392
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4638889897683675074}
+  m_GameObject: {fileID: 7298806310133505739}
   serializedVersion: 2
   m_LocalRotation: {x: 0.000000047078483, y: 0.7071067, z: -0.00000004707848, w: 0.7071068}
-  m_LocalPosition: {x: -21.090263, y: 1.0563564, z: -33.611526}
+  m_LocalPosition: {x: -21.090263, y: 0.46930572, z: -35.143932}
   m_LocalScale: {x: 1.421893, y: 1.421893, z: 1.421893}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8783668437287311470
+--- !u!33 &2535487184626355137
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4638889897683675074}
-  m_Mesh: {fileID: -5510587555255242087, guid: 88bc3f183713ba94f8a1c13b4316fb29, type: 3}
---- !u!23 &5677478317546137250
+  m_GameObject: {fileID: 7298806310133505739}
+  m_Mesh: {fileID: -5510587555255242087, guid: d50f797cd5596734ab78f0fbb8f78630, type: 3}
+--- !u!23 &2821778246929835384
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4638889897683675074}
+  m_GameObject: {fileID: 7298806310133505739}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -67,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7986131059223224249, guid: 88bc3f183713ba94f8a1c13b4316fb29, type: 3}
+  - {fileID: -7986131059223224249, guid: d50f797cd5596734ab78f0fbb8f78630, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -89,13 +88,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &-6148062263009197011
+--- !u!114 &2015229632496059956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7298806310133505739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3496af674870ff146a9905d3c8c71b98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nombreObjeto: Reloj
+--- !u!65 &493381997410800358
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4638889897683675074}
+  m_GameObject: {fileID: 7298806310133505739}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -109,44 +121,4 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.12211124, y: 0.11471318, z: 0.065797925}
-  m_Center: {x: -0.0028142254, y: -3.6451724e-16, z: 0.012579292}
---- !u!114 &1887124579477642311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4638889897683675074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3496af674870ff146a9905d3c8c71b98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nombreObjeto: Objeto
---- !u!54 &8580388375435827550
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4638889897683675074}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Center: {x: -0.0028142254, y: -3.6451724e-16, z: 0.012578338}

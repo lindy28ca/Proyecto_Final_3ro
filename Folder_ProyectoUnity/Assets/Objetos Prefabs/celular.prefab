@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7874891825379937864
+--- !u!1 &8143798162863378738
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,12 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7716925291426592499}
-  - component: {fileID: 412946594392395276}
-  - component: {fileID: 8534671277774802013}
-  - component: {fileID: 6318440596751356759}
-  - component: {fileID: 1412604920998102087}
-  - component: {fileID: 8456244354975285828}
+  - component: {fileID: 2398616501675426710}
+  - component: {fileID: 2538454397253437767}
+  - component: {fileID: 6859582027370415169}
+  - component: {fileID: 2407163528291809447}
+  - component: {fileID: 6152257800239592195}
   m_Layer: 9
   m_Name: celular
   m_TagString: Untagged
@@ -21,13 +20,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7716925291426592499
+--- !u!4 &2398616501675426710
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7874891825379937864}
+  m_GameObject: {fileID: 8143798162863378738}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 5.7771735, y: 0.66647434, z: -5.5905585}
@@ -36,21 +35,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &412946594392395276
+--- !u!33 &2538454397253437767
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7874891825379937864}
-  m_Mesh: {fileID: 2649405287598551928, guid: 88bc3f183713ba94f8a1c13b4316fb29, type: 3}
---- !u!23 &8534671277774802013
+  m_GameObject: {fileID: 8143798162863378738}
+  m_Mesh: {fileID: 2649405287598551928, guid: d50f797cd5596734ab78f0fbb8f78630, type: 3}
+--- !u!23 &6859582027370415169
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7874891825379937864}
+  m_GameObject: {fileID: 8143798162863378738}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -67,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1708684242180143079, guid: 88bc3f183713ba94f8a1c13b4316fb29, type: 3}
+  - {fileID: 1708684242180143079, guid: d50f797cd5596734ab78f0fbb8f78630, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -89,13 +88,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6318440596751356759
+--- !u!114 &2407163528291809447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8143798162863378738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3496af674870ff146a9905d3c8c71b98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nombreObjeto: Celular
+--- !u!65 &6152257800239592195
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7874891825379937864}
+  m_GameObject: {fileID: 8143798162863378738}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -110,43 +122,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.18471344, y: 0.25398138, z: 0.019041684}
   m_Center: {x: 0, y: 0, z: 0.030878268}
---- !u!114 &1412604920998102087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7874891825379937864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3496af674870ff146a9905d3c8c71b98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nombreObjeto: Objeto
---- !u!54 &8456244354975285828
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7874891825379937864}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0

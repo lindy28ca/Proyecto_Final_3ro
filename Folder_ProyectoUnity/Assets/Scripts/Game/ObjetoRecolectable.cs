@@ -2,19 +2,34 @@ using UnityEngine;
 
 public class ObjetoRecolectable : ObjectInteractive
 {
-    [SerializeField] private string nombreObjeto = "Objeto";
+    [Tooltip("Este nombre debe coincidir con el que está en la lista UI")]
+    public string nombreObjeto;
 
     protected override void Interaccion()
     {
         Debug.Log(nombreObjeto + " recogido con tecla E.");
 
-        // Primero, desactivar la entrada (muy importante)
+        // Evitar errores si no se encuentra la lista
+        ListaObjetosUI lista = FindObjectOfType<ListaObjetosUI>();
+        if (lista != null)
+        {
+            lista.TacharObjeto(nombreObjeto);
+        }
+        else
+        {
+            Debug.LogWarning("No se encontró ListaObjetosUI en la escena. Asegúrate de que esté activa y presente.");
+        }
+
+        // Notificar al GameManager si es necesario
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.RecogerObjeto();
+        }
+
+        // Desactivar la interacción si tu sistema lo necesita
         DesactiveInput();
 
-        // Luego, informar al GameManager
-        GameManager.Instance.RecogerObjeto();
-
-        // Finalmente, destruir el objeto
+        // Destruir el objeto
         Destroy(gameObject);
     }
 }
