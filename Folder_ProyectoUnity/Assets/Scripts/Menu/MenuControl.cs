@@ -38,7 +38,6 @@ public class MenuControl : MonoBehaviour
         startingGame = true;
         startCamera.Priority = 0;
         menuCamera.Priority = 100;
-        //musicSource.Play();
     }
     public IEnumerator Play()
     {
