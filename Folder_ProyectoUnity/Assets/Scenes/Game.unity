@@ -12620,8 +12620,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 9a1592235ba024543acba31db29ced3f, type: 3}
+  m_Resource: {fileID: 8300000, guid: 9a1592235ba024543acba31db29ced3f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -54728,6 +54728,10 @@ PrefabInstance:
       propertyPath: camaraPlayer
       value: 
       objectReference: {fileID: 330585546}
+    - target: {fileID: 7979455776647114650, guid: 8368d8cd85d4fcd4784c087bcc136dd6, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8422958908752303619, guid: 8368d8cd85d4fcd4784c087bcc136dd6, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.1661

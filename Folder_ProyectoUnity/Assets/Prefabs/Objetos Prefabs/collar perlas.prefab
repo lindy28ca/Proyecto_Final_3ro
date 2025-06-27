@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 538697720543566223}
   - component: {fileID: 5091205406226373656}
   - component: {fileID: 4354977356721854203}
+  - component: {fileID: -7936691297867029290}
   m_Layer: 9
   m_Name: collar perlas
   m_TagString: Untagged
@@ -122,3 +123,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.05991578, y: 0.05414389, z: 0.0035138908}
   m_Center: {x: -0.0000000074505797, y: 0.025313333, z: -0.0000000011641524}
+--- !u!54 &-7936691297867029290
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8912916314972396349}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3946791293243080705}
   - component: {fileID: 563923927478467045}
   - component: {fileID: 5022144872630867657}
+  - component: {fileID: 6506229339177982234}
   m_Layer: 9
   m_Name: PlayStation
   m_TagString: Untagged
@@ -122,3 +123,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.96974593, y: 0.1546976, z: 0.888078}
   m_Center: {x: -0.00000004470347, y: 0.000000011175869, z: 0.444039}
+--- !u!54 &6506229339177982234
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4524973151885704720}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
