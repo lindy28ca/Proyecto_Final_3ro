@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class CircularDoubleLinkedList<T> : MonoBehaviour
 {
@@ -185,6 +186,23 @@ public class CircularDoubleLinkedList<T> : MonoBehaviour
         head = null;
         last = null;
         count = 0;
+    }
+    #endregion
+
+    #region Extra
+    public List<T> ToList()
+    {
+        List<T> lista = new List<T>();
+        if (Head == null) return lista;
+
+        Node<T> actual = Head;
+        do
+        {
+            lista.Add(actual.Value);
+            actual = actual.Next;
+        } while (actual != Head);
+
+        return lista;
     }
     #endregion
     #endregion

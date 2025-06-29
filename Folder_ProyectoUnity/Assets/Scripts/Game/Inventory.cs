@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField]private Image[] image;
+    [SerializeField] private Image[] image;
     [SerializeField] private ItemsInformation[] itemInformation;
     [SerializeField] private Transform tarjet;
+
     private CircularDoubleLinkedList<ItemsInformation> listaCircular = new CircularDoubleLinkedList<ItemsInformation>();
     private Node<ItemsInformation> currentNode;
 
@@ -18,9 +20,11 @@ public class Inventory : MonoBehaviour
             itemInformation[i].ItemTranform.SetParent(tarjet);
             itemInformation[i].UpdateRotation();
         }
+
         currentNode = listaCircular.Head;
         UpdateImages();
     }
+
     public void Add(ItemsInformation information)
     {
         listaCircular.Add(information);
@@ -30,20 +34,31 @@ public class Inventory : MonoBehaviour
         information.ItemTranform.gameObject.SetActive(false);
         UpdateImages();
     }
-    private void Next()
+
+    public bool TieneObjeto(string nombre)
     {
-        currentNode = currentNode.Next;
+        var nodo = listaCircular.Head;
+        if (nodo == null) return false;
+
+        do
+        {
+            if (nodo.Value.pinza == nombre)
+                return true;
+            nodo = nodo.Next;
+        } while (nodo != listaCircular.Head);
+
+        return false;
     }
-    private void Previous()
-    {
-        currentNode = currentNode.Prev;
-    }
+
+    private void Next() => currentNode = currentNode.Next;
+    private void Previous() => currentNode = currentNode.Prev;
+
     private void UpdateImages()
     {
         Node<ItemsInformation> tempNode = currentNode;
         for (int i = 0; i < image.Length; i++)
         {
-            if (tempNode != currentNode)
+            if (tempNode != null)
             {
                 image[i].sprite = tempNode.Value.ItemSprite;
                 tempNode = tempNode.Next;
@@ -54,27 +69,29 @@ public class Inventory : MonoBehaviour
             }
         }
     }
+
     public void GetInputScroll(float valorInput)
     {
         if (listaCircular.Count <= 1) return;
         currentNode.Value.ItemTranform.gameObject.SetActive(false);
-        if (valorInput < 0)
-        {
-            Previous();
-        }else if(valorInput > 0)
-        {
-            Next();
-        }
+        if (valorInput < 0) Previous();
+        else if (valorInput > 0) Next();
         currentNode.Value.ItemTranform.gameObject.SetActive(true);
         UpdateImages();
     }
-    private void OnEnable()
-    {
-        InputReader.OnScroll += GetInputScroll;
-    }
-    private void OnDisable()
-    {
-        InputReader.OnScroll -= GetInputScroll;
-    }
 
+    private void OnEnable() => InputReader.OnScroll += GetInputScroll;
+    private void OnDisable() => InputReader.OnScroll -= GetInputScroll;
+
+    public bool Contiene(string nombre)
+    {
+        foreach (var nodo in listaCircular.ToList())
+        {
+            if (nodo.pinza == nombre)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

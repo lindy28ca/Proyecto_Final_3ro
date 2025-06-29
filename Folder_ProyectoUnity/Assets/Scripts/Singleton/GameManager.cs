@@ -5,16 +5,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [SerializeField] private Transform[] newposition;
-    [SerializeField] private ItemsInformation[] itemsInformation;
     [SerializeField] private Inventory inventario;
-    [SerializeField] private Transform[] positionRamdom;
-    [SerializeField] private GameObject[] prefabs;
-    private int objetosRecogidos = 0;
-    [SerializeField] private int totalObjetos = 7;
+    [SerializeField] private ItemsInformation objetoInicial; // Asigna la pinza desde el Inspector
 
-    [SerializeField] private float puntos;
-    [SerializeField] private Puntos puntosSO;
+    private int objetosRecolectados = 0;
+    private const int totalObjetosNecesarios = 7;
 
     private void Awake()
     {
@@ -30,23 +25,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-
-        // Reubica los ItemsInformation si se usan como ayuda visual
-        for (int i = 0; i < itemsInformation.Length; i++)
+        if (objetoInicial != null)
         {
-            int positionArray = Random.Range(0, newposition.Length);
-            itemsInformation[i].ItemTranform.position = newposition[positionArray].position;
+            AddInventory(objetoInicial); // Añadir la pinza al comenzar
         }
-
-        // Instancia los 7 objetos recolectables en posiciones aleatorias
-        InstanciarPrefabsEnPosiciones();
-    }
-
-    private void Update()
-    {
-        puntos += Time.deltaTime;
     }
 
     public void AddInventory(ItemsInformation informacion)
@@ -54,52 +36,18 @@ public class GameManager : MonoBehaviour
         inventario.Add(informacion);
     }
 
-    private void InstanciarPrefabsEnPosiciones()
+    public void RecogerObjeto()
     {
-        if (positionRamdom.Length < prefabs.Length)
-        {
-            Debug.LogWarning("Hay más prefabs que posiciones, algunos se repetirán.");
-        }
+        objetosRecolectados++;
 
-        // Mezclar las posiciones
-        Transform[] posicionesMezcladas = new Transform[positionRamdom.Length];
-        positionRamdom.CopyTo(posicionesMezcladas, 0);
-
-        for (int i = 0; i < posicionesMezcladas.Length; i++)
+        if (objetosRecolectados >= totalObjetosNecesarios)
         {
-            int randomIndex = Random.Range(i, posicionesMezcladas.Length);
-            Transform temp = posicionesMezcladas[i];
-            posicionesMezcladas[i] = posicionesMezcladas[randomIndex];
-            posicionesMezcladas[randomIndex] = temp;
-        }
-
-        // Instanciar cada prefab en una posición aleatoria
-        for (int i = 0; i < prefabs.Length; i++)
-        {
-            Transform posicionAsignada = posicionesMezcladas[i % posicionesMezcladas.Length];
-            Instantiate(prefabs[i], posicionAsignada.position, Quaternion.identity);
+            SceneManager.LoadScene("Ganaste");
         }
     }
 
-    public void RecogerObjeto()
+    public bool TieneObjeto(string nombre)
     {
-        objetosRecogidos++;
-        Debug.Log("Objetos recogidos: " + objetosRecogidos);
-
-        if (objetosRecogidos >= totalObjetos)
-        {
-            Debug.Log("¡Ganaste! Cargando escena...");
-
-            if (puntosSO != null)
-            {
-                puntosSO.AgregarPunto((int)puntos);
-            }
-            else
-            {
-                Debug.LogWarning("puntosSO no está asignado en el GameManager.");
-            }
-
-            SceneManager.LoadScene("Ganaste");
-        }
+        return inventario.Contiene(nombre);
     }
 }

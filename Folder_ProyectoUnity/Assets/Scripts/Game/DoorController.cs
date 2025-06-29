@@ -1,48 +1,50 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.Windows;
 
 public class DoorController : ObjectInteractive
 {
     [SerializeField] private Vector3 rotation;
-    private Quaternion originRotacion;
-    private Quaternion Rotation;
-    private bool open;
+    [SerializeField] private string nombreObjetoRequerido = "Pinza"; // El nombre exacto del objeto en ItemsInformation
+
+    private Quaternion rotacionInicial;
+    private Quaternion rotacionFinal;
+    private bool abierta;
+
     private void Awake()
     {
-        originRotacion = transform.rotation;
-        Rotation = Quaternion.Euler(rotation);
+        rotacionInicial = transform.rotation;
+        rotacionFinal = Quaternion.Euler(rotation);
     }
+
     protected override void Interaccion()
     {
-        if (open)
+        if (!abierta)
         {
-            open = false;
-            AnimationDoor(3f);
+            if (GameManager.Instance != null && GameManager.Instance.TieneObjeto(nombreObjetoRequerido))
+            {
+                abierta = true;
+                StartCoroutine(AnimationDoor(3f));
+            }
+            else
+            {
+                Debug.Log("No tienes el objeto necesario: " + nombreObjetoRequerido);
+            }
         }
         else
         {
-            open = true;
-            AnimationDoor(3f);
+            abierta = false;
+            StartCoroutine(AnimationDoor(3f));
         }
     }
 
     private void Update()
     {
-        if (open)
-        {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Rotation, 5 * Time.deltaTime);
-        }
-        else
-        {
-            transform.rotation = Quaternion.Slerp(transform.rotation, originRotacion, 5 * Time.deltaTime);
-        }
+        Quaternion destino = abierta ? rotacionFinal : rotacionInicial;
+        transform.rotation = Quaternion.Slerp(transform.rotation, destino, 5 * Time.deltaTime);
     }
 
-    private IEnumerator AnimationDoor(float time)
+    private IEnumerator AnimationDoor(float tiempo)
     {
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSeconds(tiempo);
     }
-
-
 }
