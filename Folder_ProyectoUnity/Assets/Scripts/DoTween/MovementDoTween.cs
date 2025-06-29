@@ -15,7 +15,7 @@ public class MovementDoTween : MonoBehaviour
     }
     private void Start()
     {
-        Move(final.anchoredPosition, 25f);
+        Move(final.anchoredPosition, 10f);
     }
 
     public void Move(Vector2 newPosition, float time)

@@ -2,13 +2,18 @@ using UnityEngine;
 
 public class TimeController : MonoBehaviour
 {
-    [SerializeField] private TimeSO time;
-    private void Start()
-    {
-        time.time = 0;
-    }
+    [SerializeField] private Puntos puntos;
+    private float time;
     void Update()
     {
-        time.time += Time.deltaTime;
+        time += Time.deltaTime;
     }
+    private void OnDestroy()
+    {
+        if (puntos != null)
+        {
+            puntos.AgregarPunto((int)time);
+        }
+    }
+
 }

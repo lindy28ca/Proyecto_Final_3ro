@@ -5,11 +5,20 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [Header("Referencias")]
     [SerializeField] private Inventory inventario;
-    [SerializeField] private ItemsInformation objetoInicial; // Asigna la pinza desde el Inspector
+    [SerializeField] private ItemsInformation objetoInicial;
+    [SerializeField] private ItemsInformation[] itemsInformation;
+    [SerializeField] private GameObject[] prefabs;
+    [SerializeField] private Transform[] newposition;
+    [SerializeField] private Transform[] positionRamdom;
+
+    [Header("Puntaje")]
+    [SerializeField] private float puntos;
+    [SerializeField] private Puntos puntosSO;
 
     private int objetosRecolectados = 0;
-    private const int totalObjetosNecesarios = 7;
+    [SerializeField] private int totalObjetos = 7;
 
     private void Awake()
     {
@@ -25,10 +34,26 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         if (objetoInicial != null)
         {
-            AddInventory(objetoInicial); // Añadir la pinza al comenzar
+            AddInventory(objetoInicial); 
         }
+
+        for (int i = 0; i < itemsInformation.Length; i++)
+        {
+            int positionArray = Random.Range(0, newposition.Length);
+            itemsInformation[i].ItemTranform.position = newposition[positionArray].position;
+        }
+
+        InstanciarPrefabsEnPosiciones();
+    }
+
+    private void Update()
+    {
+        puntos += Time.deltaTime;
     }
 
     public void AddInventory(ItemsInformation informacion)
@@ -39,9 +64,12 @@ public class GameManager : MonoBehaviour
     public void RecogerObjeto()
     {
         objetosRecolectados++;
+        Debug.Log("Objetos recogidos: " + objetosRecolectados);
 
-        if (objetosRecolectados >= totalObjetosNecesarios)
+        if (objetosRecolectados >= totalObjetos)
         {
+            Debug.Log("¡Ganaste! Cargando escena...");
+            puntosSO.AgregarPunto((int)puntos);
             SceneManager.LoadScene("Ganaste");
         }
     }
@@ -49,5 +77,35 @@ public class GameManager : MonoBehaviour
     public bool TieneObjeto(string nombre)
     {
         return inventario.Contiene(nombre);
+    }
+
+    public bool PinzaEnMano(string nombre)
+    {
+        return inventario != null && inventario.PinzaEnMano(nombre);
+    }
+
+    private void InstanciarPrefabsEnPosiciones()
+    {
+        if (positionRamdom.Length < prefabs.Length)
+        {
+            Debug.LogWarning("Hay más prefabs que posiciones, algunos se repetirán.");
+        }
+
+        Transform[] posicionesMezcladas = new Transform[positionRamdom.Length];
+        positionRamdom.CopyTo(posicionesMezcladas, 0);
+
+        for (int i = 0; i < posicionesMezcladas.Length; i++)
+        {
+            int randomIndex = Random.Range(i, posicionesMezcladas.Length);
+            Transform temp = posicionesMezcladas[i];
+            posicionesMezcladas[i] = posicionesMezcladas[randomIndex];
+            posicionesMezcladas[randomIndex] = temp;
+        }
+
+        for (int i = 0; i < prefabs.Length; i++)
+        {
+            Transform posicionAsignada = posicionesMezcladas[i % posicionesMezcladas.Length];
+            Instantiate(prefabs[i], posicionAsignada.position, Quaternion.identity);
+        }
     }
 }

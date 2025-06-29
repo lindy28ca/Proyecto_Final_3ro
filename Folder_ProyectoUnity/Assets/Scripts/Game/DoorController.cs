@@ -4,7 +4,7 @@ using System.Collections;
 public class DoorController : ObjectInteractive
 {
     [SerializeField] private Vector3 rotation;
-    [SerializeField] private string nombreObjetoRequerido = "Pinza"; // El nombre exacto del objeto en ItemsInformation
+    [SerializeField] private string nombreObjetoRequerido = "Pinza"; // nombre exacto en el ScriptableObject
 
     private Quaternion rotacionInicial;
     private Quaternion rotacionFinal;
@@ -20,14 +20,14 @@ public class DoorController : ObjectInteractive
     {
         if (!abierta)
         {
-            if (GameManager.Instance != null && GameManager.Instance.TieneObjeto(nombreObjetoRequerido))
+            if (GameManager.Instance != null && GameManager.Instance.PinzaEnMano(nombreObjetoRequerido))
             {
                 abierta = true;
                 StartCoroutine(AnimationDoor(3f));
             }
             else
             {
-                Debug.Log("No tienes el objeto necesario: " + nombreObjetoRequerido);
+                Debug.Log("Necesitas tener la pinza en la mano para abrir esta puerta.");
             }
         }
         else

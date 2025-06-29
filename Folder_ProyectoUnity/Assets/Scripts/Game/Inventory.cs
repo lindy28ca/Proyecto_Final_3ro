@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private Image[] image;
-    [SerializeField] private ItemsInformation[] itemInformation;
+    [SerializeField] private ItemsInformation[] itemInformation; // SOLO incluye aquí la pinza si deseas
     [SerializeField] private Transform tarjet;
 
     private CircularDoubleLinkedList<ItemsInformation> listaCircular = new CircularDoubleLinkedList<ItemsInformation>();
@@ -13,12 +13,10 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
+        // Solo agrega objetos iniciales (como la pinza), si hay
         for (int i = 0; i < itemInformation.Length; i++)
         {
-            listaCircular.Add(itemInformation[i]);
-            itemInformation[i].ItemTranform.position = tarjet.position;
-            itemInformation[i].ItemTranform.SetParent(tarjet);
-            itemInformation[i].UpdateRotation();
+            Add(itemInformation[i]);
         }
 
         currentNode = listaCircular.Head;
@@ -27,27 +25,33 @@ public class Inventory : MonoBehaviour
 
     public void Add(ItemsInformation information)
     {
-        listaCircular.Add(information);
-        information.ItemTranform.position = tarjet.position;
-        information.ItemTranform.SetParent(tarjet);
-        information.UpdateRotation();
-        information.ItemTranform.gameObject.SetActive(false);
-        UpdateImages();
+        if (!listaCircular.ToList().Contains(information))
+        {
+            listaCircular.Add(information);
+            information.ItemTranform.position = tarjet.position;
+            information.ItemTranform.SetParent(tarjet);
+            information.UpdateRotation();
+            information.ItemTranform.gameObject.SetActive(false);
+            UpdateImages();
+        }
     }
 
-    public bool TieneObjeto(string nombre)
+    public bool Contiene(string nombre)
     {
-        var nodo = listaCircular.Head;
-        if (nodo == null) return false;
-
-        do
+        foreach (var nodo in listaCircular.ToList())
         {
-            if (nodo.Value.pinza == nombre)
+            if (nodo.pinza == nombre)
+            {
                 return true;
-            nodo = nodo.Next;
-        } while (nodo != listaCircular.Head);
-
+            }
+        }
         return false;
+    }
+
+    public bool PinzaEnMano(string nombre)
+    {
+        if (currentNode == null || currentNode.Value == null) return false;
+        return currentNode.Value.pinza == nombre;
     }
 
     private void Next() => currentNode = currentNode.Next;
@@ -82,16 +86,4 @@ public class Inventory : MonoBehaviour
 
     private void OnEnable() => InputReader.OnScroll += GetInputScroll;
     private void OnDisable() => InputReader.OnScroll -= GetInputScroll;
-
-    public bool Contiene(string nombre)
-    {
-        foreach (var nodo in listaCircular.ToList())
-        {
-            if (nodo.pinza == nombre)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
 }
