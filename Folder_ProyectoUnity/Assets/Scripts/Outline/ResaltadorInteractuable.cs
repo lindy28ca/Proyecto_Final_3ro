@@ -3,37 +3,29 @@ using MoreMountains.Feedbacks;
 
 public class ResaltadorInteractuable : MonoBehaviour
 {
-    private Outline outline;
+    private Light luz;
 
-    [Tooltip("Efectos visuales configurados en MMF Player (Feel v4+)")]
-    public MMF_Player feedbackAlSeleccionar;
+    [SerializeField] private MMF_Player feedbackAlSeleccionar;
 
     void Start()
     {
-        outline = GetComponent<Outline>();
-        if (outline != null)
-        {
-            outline.enabled = false; // Desactivado por defecto
-        }     
+        luz = GetComponentInChildren<Light>(true);
+        if (luz != null)
+            luz.enabled = false;
     }
 
     public void ActivarResaltado()
     {
-        if (outline != null)
-        {
-            outline.enabled = true;
-        }
+        if (luz != null)
+            luz.enabled = true;
+
         if (feedbackAlSeleccionar != null)
-        {
             feedbackAlSeleccionar.PlayFeedbacks();
-        }
     }
 
     public void DesactivarResaltado()
     {
-        if (outline != null)
-        {
-            outline.enabled = false;
-        }
+        if (luz != null)
+            luz.enabled = false;
     }
 }

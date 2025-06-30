@@ -53,6 +53,18 @@ public class CamaraController : MonoBehaviour
             }
         }
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && objectInteractive != null)
+        {
+            DesaparecerConFeedback desaparece = objectInteractive.GetComponent<DesaparecerConFeedback>();
+            if (desaparece != null)
+            {
+                desaparece.Desaparecer();
+            }
+        }
+    }
+
 
     private void OnDrawGizmos()
     {
