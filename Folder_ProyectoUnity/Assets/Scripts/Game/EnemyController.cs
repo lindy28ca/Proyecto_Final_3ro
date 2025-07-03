@@ -37,13 +37,10 @@ public class EnemyController : MonoBehaviour
 
             var vecinos = grafo.NodeGraphs[nodoActual].Neighbors;
 
-            // Obtener el siguiente nodo (vecino distinto del anterior)
             foreach (var vecino in vecinos)
             {
-                // Buscamos el nodo que coincida con el objeto vecino
                 var nodo = grafo.NodeGraphs.FirstOrDefault(x => x.Value == vecino);
 
-                // Verificamos si se encontró un nodo y si es distinto del actual
                 if (!nodo.Equals(default(KeyValuePair<string, NodeGraph<Vector3>>)) && nodo.Key != siguienteNodo)
                 {
                     siguienteNodo = nodo.Key;

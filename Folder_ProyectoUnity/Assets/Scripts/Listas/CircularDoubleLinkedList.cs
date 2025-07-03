@@ -146,21 +146,21 @@ public class CircularDoubleLinkedList<T> : MonoBehaviour
             return;
         }
         #region NodoEsElPrimero
-        if (node == head && count >= 1)//El Nodo es el primero de la lista
+        if (node == head && count >= 1)
         {
             head = node.Next;
             head.SetPrev(last);
             count--;
             return;
         }
-        else if (node == head && count == 1)//El Nodo es el primero y el unico de la lista
+        else if (node == head && count == 1)
         {
             RemoveAll();
             return;
         }
         #endregion
         #region NodoEnElMedio
-        if (SeekPrev(objective) != null && node.Next != null)//El nodo esta en el medio y apunta a siguientes
+        if (SeekPrev(objective) != null && node.Next != null)
         {
             SeekPrev(objective).SetNext(node.Next);
 

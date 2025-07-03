@@ -11,7 +11,7 @@ public class DesaparecerConFeedback : MonoBehaviour
         if (feedbackAlDesaparecer != null)
         {
             feedbackAlDesaparecer.PlayFeedbacks();
-            Destroy(gameObject, delayDestruir); // espera a que termine la animación
+            Destroy(gameObject, delayDestruir); 
         }
         else
         {

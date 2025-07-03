@@ -7,7 +7,7 @@ public class ObjetoRecolectable : ObjectInteractive
 
     private void Start()
     {
-        Debug.Log("Objeto activo en escena: " + nombreObjeto + " en posición " + transform.position);/*unybtrvecdxs*/
+        Debug.Log("Objeto activo en escena: " + nombreObjeto + " en posición " + transform.position);
     }
 
 

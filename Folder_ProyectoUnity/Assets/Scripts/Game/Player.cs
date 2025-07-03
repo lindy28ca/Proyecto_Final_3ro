@@ -45,6 +45,8 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("Puñito"))
         {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             SceneManager.LoadScene("Perdiste");
         }
     }

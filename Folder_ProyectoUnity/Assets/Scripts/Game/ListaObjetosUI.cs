@@ -5,15 +5,14 @@ using TMPro;
 public class ListaObjetosUI : MonoBehaviour
 {
     [Header("Prefab del texto que se mostrará en la lista")]
-    public GameObject textoPrefab; // Prefab de TextMeshProUGUI
+    public GameObject textoPrefab;
 
     [Header("Contenedor con Grid Layout Group (Image)")]
-    public Transform contenedorLista; // Donde se instancian los textos
+    public Transform contenedorLista;
 
     [Header("Nombres de objetos recolectables")]
     public List<string> nombresObjetos = new List<string>();
 
-    // Diccionario para guardar los textos ya instanciados
     private Dictionary<string, TextMeshProUGUI> textosGenerados = new Dictionary<string, TextMeshProUGUI>();
 
     void Start()

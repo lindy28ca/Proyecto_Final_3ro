@@ -68,7 +68,8 @@ public class GameManager : MonoBehaviour
 
         if (objetosRecolectados >= totalObjetos)
         {
-            Debug.Log("¡Ganaste! Cargando escena...");
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             puntosSO.AgregarPunto((int)puntos);
             SceneManager.LoadScene("Ganaste");
         }
@@ -86,11 +87,6 @@ public class GameManager : MonoBehaviour
 
     private void InstanciarPrefabsEnPosiciones()
     {
-        if (positionRamdom.Length < prefabs.Length)
-        {
-            Debug.LogWarning("Hay más prefabs que posiciones, algunos se repetirán.");
-        }
-
         Transform[] posicionesMezcladas = new Transform[positionRamdom.Length];
         positionRamdom.CopyTo(posicionesMezcladas, 0);
 

@@ -20,13 +20,11 @@ public class CamaraController : MonoBehaviour
 
             if (nuevoObjeto != null && nuevoObjeto != objectInteractive)
             {
-                // Desactiva el anterior (si existe)
                 if (objectInteractive != null)
                     objectInteractive.DesactiveInput();
                 if (resaltadorActual != null)
                     resaltadorActual.DesactivarResaltado();
 
-                // Activa el nuevo
                 objectInteractive = nuevoObjeto;
                 resaltadorActual = nuevoResaltador;
 

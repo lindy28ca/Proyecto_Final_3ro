@@ -13,28 +13,19 @@ public class MenuControl : MonoBehaviour
     [SerializeField] private CinemachineCamera virtualCamera3;
 
     [SerializeField] private GameObject audioPanel;
-    //[SerializeField] private GameObject creditsPanel;
+    [SerializeField] private GameObject creditsPanel;
 
-    [SerializeField] private CanvasGroup mainMenu;
-    //[SerializeField] private AudioSource musicSource;
+    [SerializeField] private GameObject mainMenu;
 
     private bool startingGame = false;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
         Startmenu();
     }
     private void Startmenu()
     {
-        mainMenu.DOFade(1, 2f).SetUpdate(true);
+        mainMenu.SetActive(true);
         startingGame = true;
         startCamera.Priority = 0;
         menuCamera.Priority = 100;
@@ -56,14 +47,14 @@ public class MenuControl : MonoBehaviour
     }
     public void OpenAudioPanel()
     {
-        mainMenu.DOFade(0, 0.5f).SetUpdate(true);
+        mainMenu.SetActive(false);
         MoveOpenPanel(audioPanel.GetComponent<RectTransform>());
         menuCamera.Priority = 0;
         virtualCamera1.Priority = 100;
     }
     public void CloseAudioPanel()
     {
-        mainMenu.DOFade(1, 0.5f).SetUpdate(true);
+        mainMenu.SetActive(true);
         MoveClosePanel(audioPanel.GetComponent<RectTransform>());
         menuCamera.Priority = 100;
         virtualCamera1.Priority = 0;
@@ -76,12 +67,18 @@ public class MenuControl : MonoBehaviour
     {
         rect.DOAnchorPosY(1140, 1f);
     }
-    //public void OpenCredits()
-    //{
-    //    creditsPanel.SetActive(true);
-    //}
-    //public void CloseCredits()
-    //{
-    //    creditsPanel.SetActive(false);
-    //}
+    public void OpenCredits()
+    {
+        mainMenu.SetActive(false);
+        creditsPanel.SetActive(true);
+        menuCamera.Priority = 0;
+        virtualCamera2.Priority = 100;
+    }
+    public void CloseCredits()
+    {
+        mainMenu.SetActive(true);
+        creditsPanel.SetActive(false);
+        menuCamera.Priority = 100;
+        virtualCamera2.Priority = 0;
+    }
 }

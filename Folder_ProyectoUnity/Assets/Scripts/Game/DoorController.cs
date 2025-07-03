@@ -4,7 +4,7 @@ using System.Collections;
 public class DoorController : ObjectInteractive
 {
     [SerializeField] private Vector3 rotation;
-    [SerializeField] private string nombreObjetoRequerido = "Pinza"; // nombre exacto en el ScriptableObject
+    [SerializeField] private string nombreObjetoRequerido = "Pinza";
 
     private Quaternion rotacionInicial;
     private Quaternion rotacionFinal;

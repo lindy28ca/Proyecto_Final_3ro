@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private Image[] image;
-    [SerializeField] private ItemsInformation[] itemInformation; // SOLO incluye aquí la pinza si deseas
+    [SerializeField] private ItemsInformation[] itemInformation;
     [SerializeField] private Transform tarjet;
 
     private CircularDoubleLinkedList<ItemsInformation> listaCircular = new CircularDoubleLinkedList<ItemsInformation>();
@@ -13,7 +13,6 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
-        // Solo agrega objetos iniciales (como la pinza), si hay
         for (int i = 0; i < itemInformation.Length; i++)
         {
             Add(itemInformation[i]);
