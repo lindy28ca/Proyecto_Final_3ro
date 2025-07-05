@@ -1,12 +1,17 @@
 using UnityEngine;
-using TMPro;
-using System.Collections;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
+
     private bool see = false;
+
+    [Header("UI Animación")]
     [SerializeField] private MovementDoTween uiList;
+
+    [Header("Instrucciones")]
+    [SerializeField] private GameObject panelInstrucciones;
+    [SerializeField] private GameObject jugador; 
 
     private void Awake()
     {
@@ -18,6 +23,42 @@ public class UIManager : MonoBehaviour
         {
             Instance = this;
         }
+    }
+
+    private void Start()
+    {
+        if (panelInstrucciones != null)
+        {
+            Time.timeScale = 0f; // Pausar juego
+            panelInstrucciones.SetActive(true);
+
+            // Mostrar puntero
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            if (jugador != null)
+                jugador.SetActive(false);
+        }
+    }
+
+    private void Update()
+    {
+        if (panelInstrucciones != null && panelInstrucciones.activeSelf && Input.GetKeyDown(KeyCode.Space))
+        {
+            CerrarInstrucciones();
+        }
+    }
+
+    private void CerrarInstrucciones()
+    {
+        panelInstrucciones.SetActive(false);
+        Time.timeScale = 1f; // Reanudar juego
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        if (jugador != null)
+            jugador.SetActive(true);
     }
 
     public void SeeList()
