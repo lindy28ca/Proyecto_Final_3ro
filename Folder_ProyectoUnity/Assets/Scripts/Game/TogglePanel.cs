@@ -18,6 +18,18 @@ public class TogglePanel : MonoBehaviour
             {
                 bool isActive = panel.activeSelf;
                 panel.SetActive(!isActive);
+
+
+                if (!isActive) 
+                {
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.None;
+                }
+                else 
+                {
+                    Cursor.visible = false;
+                    Cursor.lockState = CursorLockMode.Locked;
+                }
             }
         }
     }

@@ -33291,6 +33291,7 @@ GameObject:
   - component: {fileID: 3399869247241069247}
   - component: {fileID: 6987297931716412895}
   - component: {fileID: 5506999580107749932}
+  - component: {fileID: 6987297931716412896}
   m_Layer: 0
   m_Name: silla comedor007
   m_TagString: Untagged
@@ -38597,6 +38598,7 @@ GameObject:
   - component: {fileID: 7311786525957624537}
   - component: {fileID: 8389288217744768944}
   - component: {fileID: 7810537408088136863}
+  - component: {fileID: 8389288217744768945}
   m_Layer: 0
   m_Name: silla comedor002
   m_TagString: Untagged
@@ -39483,6 +39485,7 @@ GameObject:
   - component: {fileID: 586516471442378959}
   - component: {fileID: 222297086156310823}
   - component: {fileID: 5189174842911524407}
+  - component: {fileID: 5189174842911524408}
   m_Layer: 0
   m_Name: silla comedor004
   m_TagString: Untagged
@@ -40911,6 +40914,7 @@ GameObject:
   - component: {fileID: 7481465717103806459}
   - component: {fileID: 777420327621466206}
   - component: {fileID: 3531678323991466863}
+  - component: {fileID: 7481465717103806460}
   m_Layer: 0
   m_Name: silla comedor005
   m_TagString: Untagged
@@ -46410,6 +46414,7 @@ GameObject:
   - component: {fileID: 5710245432715893354}
   - component: {fileID: 6249999858560812934}
   - component: {fileID: 2486435174065222431}
+  - component: {fileID: 6249999858560812935}
   m_Layer: 0
   m_Name: silla comedor008
   m_TagString: Untagged
@@ -48514,6 +48519,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5189174842911524408
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2393260341319396570}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.9797805, y: 2.1129155, z: 1.021392}
+  m_Center: {x: -0.37308118, y: 0.17027682, z: -0.29150793}
 --- !u!1 &5197064215912349123
 GameObject:
   m_ObjectHideFlags: 0
@@ -49389,6 +49415,7 @@ GameObject:
   - component: {fileID: 2510959075016381359}
   - component: {fileID: 3643648524432957780}
   - component: {fileID: 595734575913934}
+  - component: {fileID: 5415758162432546271}
   m_Layer: 0
   m_Name: silla comedor001
   m_TagString: Untagged
@@ -49396,6 +49423,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
+--- !u!65 &5415758162432546271
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5415758162432546270}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.9797805, y: 2.1129155, z: 1.021392}
+  m_Center: {x: -0.37308118, y: 0.17027682, z: -0.29150793}
 --- !u!1 &5429029420179094483
 GameObject:
   m_ObjectHideFlags: 0
@@ -52413,6 +52461,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4500356550364024894}
   m_Mesh: {fileID: 1172443028331250624, guid: d50f797cd5596734ab78f0fbb8f78630, type: 3}
+--- !u!65 &6249999858560812935
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4500356550364024894}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.9797805, y: 2.1129155, z: 1.021392}
+  m_Center: {x: -0.37308118, y: 0.17027682, z: -0.29150793}
 --- !u!33 &6255190562838730865
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -55492,6 +55561,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 576622832218540522}
   m_Mesh: {fileID: 4931373561762128689, guid: d50f797cd5596734ab78f0fbb8f78630, type: 3}
+--- !u!65 &6987297931716412896
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576622832218540522}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.9797805, y: 2.1129155, z: 1.021392}
+  m_Center: {x: -0.37308118, y: 0.17027682, z: -0.29150793}
 --- !u!4 &6990496396493603261
 Transform:
   m_ObjectHideFlags: 0
@@ -55820,6 +55910,7 @@ GameObject:
   - component: {fileID: 4051960227894329364}
   - component: {fileID: 5025682752735881826}
   - component: {fileID: 354068702955634983}
+  - component: {fileID: 7050947842516803031}
   m_Layer: 0
   m_Name: silla comedor
   m_TagString: Untagged
@@ -55827,6 +55918,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
+--- !u!65 &7050947842516803031
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7050947842516803030}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.9797805, y: 2.1129155, z: 1.021392}
+  m_Center: {x: -0.37308118, y: 0.17027682, z: -0.29150793}
 --- !u!33 &7060431634657577522
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -56511,6 +56623,7 @@ GameObject:
   - component: {fileID: 3734330211359094081}
   - component: {fileID: 119251564771962113}
   - component: {fileID: 3137107076779959857}
+  - component: {fileID: 7186270949086944168}
   m_Layer: 0
   m_Name: silla comedor003
   m_TagString: Untagged
@@ -56518,6 +56631,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
+--- !u!65 &7186270949086944168
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7186270949086944167}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.9797805, y: 2.1129155, z: 1.021392}
+  m_Center: {x: -0.37308118, y: 0.17027682, z: -0.29150793}
 --- !u!23 &7195020213792298368
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -57540,6 +57674,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 543450652276888046}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7481465717103806460
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2871492237079305844}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.9797805, y: 2.1129155, z: 1.021392}
+  m_Center: {x: -0.37308118, y: 0.17027682, z: -0.29150793}
 --- !u!1 &7481826871164832193
 GameObject:
   m_ObjectHideFlags: 0
@@ -58667,6 +58822,7 @@ GameObject:
   - component: {fileID: 8744298355386014067}
   - component: {fileID: 5024850282093900480}
   - component: {fileID: 3881427680973933923}
+  - component: {fileID: 8744298355386014068}
   m_Layer: 0
   m_Name: silla comedor009
   m_TagString: Untagged
@@ -59299,6 +59455,7 @@ GameObject:
   - component: {fileID: 3833253674465506327}
   - component: {fileID: 7235537675692033984}
   - component: {fileID: 2769062011291386363}
+  - component: {fileID: 7925715179349074750}
   m_Layer: 0
   m_Name: silla comedor006
   m_TagString: Untagged
@@ -59306,6 +59463,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
+--- !u!65 &7925715179349074750
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7925715179349074749}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.9797805, y: 2.1129155, z: 1.021392}
+  m_Center: {x: -0.37308118, y: 0.17027682, z: -0.29150793}
 --- !u!4 &7926138701897858663
 Transform:
   m_ObjectHideFlags: 0
@@ -61217,6 +61395,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2196645532633163025}
   m_Mesh: {fileID: 3445808385621233383, guid: d50f797cd5596734ab78f0fbb8f78630, type: 3}
+--- !u!65 &8389288217744768945
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2196645532633163025}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.9797805, y: 2.1129155, z: 1.021392}
+  m_Center: {x: -0.37308118, y: 0.17027682, z: -0.29150793}
 --- !u!23 &8391835375780002704
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -62651,6 +62850,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 543450652276888046}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8744298355386014068
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7726846786578775824}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.9797805, y: 2.1129155, z: 1.021392}
+  m_Center: {x: -0.37308118, y: 0.17027682, z: -0.29150793}
 --- !u!4 &8744421259412349720
 Transform:
   m_ObjectHideFlags: 0
