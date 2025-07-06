@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using System.Collections;
 
@@ -27,7 +28,7 @@ public class DoorController : ObjectInteractive
             }
             else
             {
-                Debug.Log("Necesitas tener la pinza en la mano para abrir esta puerta.");
+                MensajesUI.Instance.MostrarMensaje("Necesitas una pinza para abrir esta puerta.");
             }
         }
         else
