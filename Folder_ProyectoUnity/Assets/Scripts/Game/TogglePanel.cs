@@ -2,9 +2,15 @@ using UnityEngine;
 
 public class TogglePanel : MonoBehaviour
 {
+    #region Variables
+
     [SerializeField] private GameObject panel;
 
-    void Update()
+    #endregion
+
+    #region Unity Methods
+
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -15,4 +21,6 @@ public class TogglePanel : MonoBehaviour
             }
         }
     }
+
+    #endregion
 }
