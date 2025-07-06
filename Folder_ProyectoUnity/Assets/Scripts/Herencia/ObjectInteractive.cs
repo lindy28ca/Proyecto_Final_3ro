@@ -2,6 +2,8 @@ using UnityEngine;
 
 public abstract class ObjectInteractive : MonoBehaviour
 {
+    #region Métodos de Interacción
+
     protected abstract void Interaccion();
 
     public void ActiveInput()
@@ -13,4 +15,6 @@ public abstract class ObjectInteractive : MonoBehaviour
     {
         InputReader.OnInteractive -= Interaccion;
     }
+
+    #endregion
 }

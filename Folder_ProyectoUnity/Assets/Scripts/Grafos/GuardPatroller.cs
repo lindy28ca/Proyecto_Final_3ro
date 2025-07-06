@@ -4,11 +4,13 @@ using System.Collections.Generic;
 
 public class GuardPatroller : MonoBehaviour
 {
+    #region Variables
+
     public PatrolGraphInitializer graphInitializer;
     public int startNodeIndex = 0;
     public float attackRange = 2f;
 
-    [SerializeField] private List<int> customPath = new List<int>(); // Ruta personalizada opcional
+    [SerializeField] private List<int> customPath = new List<int>();
 
     private Animator alex;
     private NavMeshAgent agent;
@@ -19,17 +21,27 @@ public class GuardPatroller : MonoBehaviour
     private Transform transformsPlayer;
     [SerializeField] private Collider puño;
 
+    private enum StateEnemy
+    {
+        Patrol,
+        Follow,
+        Attack
+    }
+
+    #endregion
+
+    #region Unity Methods
+
     private void Awake()
     {
         alex = GetComponent<Animator>();
     }
 
-    void Start()
+    private void Start()
     {
         state = StateEnemy.Patrol;
         agent = GetComponent<NavMeshAgent>();
 
-        // Usar ruta personalizada si está definida, de lo contrario usar BFS
         if (customPath != null && customPath.Count > 0)
         {
             patrolPath = customPath;
@@ -45,10 +57,14 @@ public class GuardPatroller : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         UpdateState();
     }
+
+    #endregion
+
+    #region Estado Enemigo
 
     private void UpdateState()
     {
@@ -56,6 +72,7 @@ public class GuardPatroller : MonoBehaviour
         {
             case StateEnemy.Patrol:
                 alex.SetTrigger("Caminar");
+
                 if (!agent.pathPending && agent.remainingDistance < 0.2f)
                 {
                     currentTargetIndex = (currentTargetIndex + 1) % patrolPath.Count;
@@ -103,10 +120,15 @@ public class GuardPatroller : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Comportamiento
+
     private void LookAtPlayer()
     {
         Vector3 lookDirection = transformsPlayer.position - transform.position;
         lookDirection.y = 0f;
+
         if (lookDirection != Vector3.zero)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookDirection), Time.deltaTime * 5f);
@@ -119,6 +141,20 @@ public class GuardPatroller : MonoBehaviour
         Transform targetTransform = graphInitializer.graph.NodeGraphs[nodeId].Value;
         agent.SetDestination(targetTransform.position);
     }
+
+    public void ActivarPuño()
+    {
+        puño.enabled = true;
+    }
+
+    public void DesactivarPuño()
+    {
+        puño.enabled = false;
+    }
+
+    #endregion
+
+    #region Trigger Events
 
     private void OnTriggerEnter(Collider other)
     {
@@ -135,24 +171,9 @@ public class GuardPatroller : MonoBehaviour
         {
             transformsPlayer = null;
             state = StateEnemy.Patrol;
-            GoToNextNode(); // Retomar patrullaje
+            GoToNextNode();
         }
     }
 
-    public void ActivarPuño()
-    {
-        puño.enabled = true;
-    }
-
-    public void DesactivarPuño()
-    {
-        puño.enabled = false;
-    }
-
-    private enum StateEnemy
-    {
-        Patrol,
-        Follow,
-        Attack
-    }
+    #endregion
 }

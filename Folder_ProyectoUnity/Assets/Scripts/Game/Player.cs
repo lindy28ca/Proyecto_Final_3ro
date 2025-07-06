@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    #region Variables
+
     [Header("Raycast")]
     [SerializeField] private float distance;
     [SerializeField] private LayerMask layer;
@@ -18,6 +20,10 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform camaraPlayer;
 
     private CharacterController controller;
+
+    #endregion
+
+    #region Unity Methods
 
     private void Awake()
     {
@@ -51,20 +57,10 @@ public class Player : MonoBehaviour
         }
     }
 
-    private bool ComprobarPiso()
-    {
-        return Physics.Raycast(transform.position, Vector3.down, distance, layer);
-    }
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawRay(transform.position, Vector3.down * distance);
-    }
-
-    private void GetInput(Vector2 input)
-    {
-        inputMove = input;
     }
 
     private void OnEnable()
@@ -76,4 +72,22 @@ public class Player : MonoBehaviour
     {
         InputReader.OnMovePlayer -= GetInput;
     }
+
+    #endregion
+
+    #region ComprobarPiso
+
+    private bool ComprobarPiso()
+    {
+        return Physics.Raycast(transform.position, Vector3.down, distance, layer);
+    }
+    #endregion
+
+    #region GetInput
+    private void GetInput(Vector2 input)
+    {
+        inputMove = input;
+    }
+
+    #endregion
 }

@@ -4,11 +4,17 @@ using System.Collections;
 
 public class MensajesUI : MonoBehaviour
 {
+    #region Variables
+
     public static MensajesUI Instance;
 
     [SerializeField] private GameObject panelMensaje;
     [SerializeField] private TextMeshProUGUI textoMensaje;
     [SerializeField] private float duracion = 2f;
+
+    #endregion
+
+    #region Unity Methods
 
     private void Awake()
     {
@@ -16,11 +22,19 @@ public class MensajesUI : MonoBehaviour
         panelMensaje.SetActive(false);
     }
 
+    #endregion
+
+    #region MostrarMensaje
+
     public void MostrarMensaje(string mensaje)
     {
         StopAllCoroutines();
         StartCoroutine(MostrarMensajeTemporal(mensaje));
     }
+
+    #endregion
+
+    #region Coroutines
 
     private IEnumerator MostrarMensajeTemporal(string mensaje)
     {
@@ -29,4 +43,6 @@ public class MensajesUI : MonoBehaviour
         yield return new WaitForSecondsRealtime(duracion);
         panelMensaje.SetActive(false);
     }
+
+    #endregion
 }

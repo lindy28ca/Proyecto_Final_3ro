@@ -3,7 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    #region Singleton
+
     public static GameManager Instance;
+
+    #endregion
+
+    #region Referencias
 
     [Header("Referencias")]
     [SerializeField] private Inventory inventario;
@@ -13,12 +19,24 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform[] newposition;
     [SerializeField] private Transform[] positionRamdom;
 
+    #endregion
+
+    #region Puntaje
+
     [Header("Puntaje")]
     [SerializeField] private float puntos;
     [SerializeField] private Puntos puntosSO;
 
+    #endregion
+
+    #region Control de Objetos
+
     private int objetosRecolectados = 0;
     [SerializeField] private int totalObjetos = 7;
+
+    #endregion
+
+    #region Unity Methods
 
     private void Awake()
     {
@@ -39,7 +57,7 @@ public class GameManager : MonoBehaviour
 
         if (objetoInicial != null)
         {
-            AddInventory(objetoInicial); 
+            AddInventory(objetoInicial);
         }
 
         for (int i = 0; i < itemsInformation.Length; i++)
@@ -56,6 +74,10 @@ public class GameManager : MonoBehaviour
         puntos += Time.deltaTime;
     }
 
+    #endregion
+
+    #region Métodos Públicos
+
     public void AddInventory(ItemsInformation informacion)
     {
         inventario.Add(informacion);
@@ -64,7 +86,6 @@ public class GameManager : MonoBehaviour
     public void RecogerObjeto()
     {
         objetosRecolectados++;
-        Debug.Log("Objetos recogidos: " + objetosRecolectados);
 
         if (objetosRecolectados >= totalObjetos)
         {
@@ -85,6 +106,10 @@ public class GameManager : MonoBehaviour
         return inventario != null && inventario.PinzaEnMano(nombre);
     }
 
+    #endregion
+
+    #region Métodos Privados
+
     private void InstanciarPrefabsEnPosiciones()
     {
         Transform[] posicionesMezcladas = new Transform[positionRamdom.Length];
@@ -104,4 +129,6 @@ public class GameManager : MonoBehaviour
             Instantiate(prefabs[i], posicionAsignada.position, Quaternion.identity);
         }
     }
+
+    #endregion
 }

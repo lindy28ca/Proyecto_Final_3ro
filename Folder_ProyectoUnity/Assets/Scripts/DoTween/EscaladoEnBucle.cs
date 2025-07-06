@@ -3,8 +3,14 @@ using DG.Tweening;
 
 public class EscaladoEnBucle : MonoBehaviour
 {
+    #region Variables
+
     [SerializeField] private Vector3 escalaAumentada = new Vector3(1.5f, 1.5f, 1.5f);
     [SerializeField] private float duracion = 0.5f;
+
+    #endregion
+
+    #region Unity Methods
 
     private void Start()
     {
@@ -13,6 +19,8 @@ public class EscaladoEnBucle : MonoBehaviour
         Sequence secuenciaEscala = DOTween.Sequence();
         secuenciaEscala.Append(transform.DOScale(escalaAumentada, duracion).SetEase(Ease.InOutSine));
         secuenciaEscala.Append(transform.DOScale(escalaOriginal, duracion).SetEase(Ease.InOutSine));
-        secuenciaEscala.SetLoops(-1); 
+        secuenciaEscala.SetLoops(-1);
     }
+
+    #endregion
 }

@@ -2,7 +2,13 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    #region Singleton
+
     public static UIManager Instance;
+
+    #endregion
+
+    #region Variables
 
     private bool see = false;
 
@@ -11,7 +17,11 @@ public class UIManager : MonoBehaviour
 
     [Header("Instrucciones")]
     [SerializeField] private GameObject panelInstrucciones;
-    [SerializeField] private GameObject jugador; 
+    [SerializeField] private GameObject jugador;
+
+    #endregion
+
+    #region Unity Methods
 
     private void Awake()
     {
@@ -29,10 +39,9 @@ public class UIManager : MonoBehaviour
     {
         if (panelInstrucciones != null)
         {
-            Time.timeScale = 0f; // Pausar juego
+            Time.timeScale = 0f;
             panelInstrucciones.SetActive(true);
 
-            // Mostrar puntero
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 
@@ -49,10 +58,24 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        InputReader.OnSeeList += SeeList;
+    }
+
+    private void OnDisable()
+    {
+        InputReader.OnSeeList -= SeeList;
+    }
+
+    #endregion
+
+    #region CerrarInstrucciones
+
     private void CerrarInstrucciones()
     {
         panelInstrucciones.SetActive(false);
-        Time.timeScale = 1f; // Reanudar juego
+        Time.timeScale = 1f;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -60,6 +83,10 @@ public class UIManager : MonoBehaviour
         if (jugador != null)
             jugador.SetActive(true);
     }
+
+    #endregion
+
+    #region SeeList
 
     public void SeeList()
     {
@@ -75,13 +102,5 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        InputReader.OnSeeList += SeeList;
-    }
-
-    private void OnDisable()
-    {
-        InputReader.OnSeeList -= SeeList;
-    }
+    #endregion
 }

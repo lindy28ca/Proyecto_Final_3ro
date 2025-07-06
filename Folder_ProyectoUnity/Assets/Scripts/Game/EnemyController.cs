@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    #region Variables
+
     public Graph<string, Vector3> grafo = new Graph<string, Vector3>();
     public string nodoActual;
     private string siguienteNodo;
     private float velocidad = 2f;
 
-    void Awake()
+    #endregion
+
+    #region Unity Methods
+
+    private void Awake()
     {
         grafo.AddNodeGraph("A", new Vector3(0, 0, 0));
         grafo.AddNodeGraph("B", new Vector3(5, 0, 0));
@@ -21,12 +27,14 @@ public class EnemyController : MonoBehaviour
         grafo.AddEdge("C", "D");
         grafo.AddEdge("D", "A");
     }
-    void Start()
+
+    private void Start()
     {
         nodoActual = "A";
         siguienteNodo = grafo.NodeGraphs[nodoActual].Neighbors[0].Value.ToString();
     }
-    void Update()
+
+    private void Update()
     {
         Vector3 destino = grafo.NodeGraphs[siguienteNodo].Value;
         transform.position = Vector3.MoveTowards(transform.position, destino, velocidad * Time.deltaTime);
@@ -47,8 +55,8 @@ public class EnemyController : MonoBehaviour
                     break;
                 }
             }
-
-
         }
     }
+
+    #endregion
 }

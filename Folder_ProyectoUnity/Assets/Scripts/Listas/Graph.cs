@@ -1,18 +1,26 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using static UnityEngine.Rendering.DebugUI.Table;
 using System.Linq;
 
 public class Graph<TKey, TNodeGraphValue>
 {
+    #region Propiedades
+
     public Dictionary<TKey, NodeGraph<TNodeGraphValue>> NodeGraphs { get; private set; }
+
+    #endregion
+
+    #region Constructor
 
     public Graph()
     {
         NodeGraphs = new Dictionary<TKey, NodeGraph<TNodeGraphValue>>();
     }
+
+    #endregion
+
+    #region Agregar Nodos y Aristas
 
     public bool AddNodeGraph(TKey key, TNodeGraphValue value)
     {
@@ -37,6 +45,10 @@ public class Graph<TKey, TNodeGraphValue>
         n1.AddNeighbor(n2);
         n2.AddNeighbor(n1);
     }
+
+    #endregion
+
+    #region Mostrar Grafo
 
     public void DisplayGraphAsMatrix()
     {
@@ -67,7 +79,7 @@ public class Graph<TKey, TNodeGraphValue>
                 {
                     int j = keyToIndex[neighborKey];
                     matrix[i, j] = 1;
-                    matrix[j, i] = 1; // Simétrico
+                    matrix[j, i] = 1;
                 }
             }
         }
@@ -115,6 +127,11 @@ public class Graph<TKey, TNodeGraphValue>
             Debug.Log(line.TrimEnd(' ', ','));
         }
     }
+
+    #endregion
+
+    #region Recorridos
+
     public List<TKey> BFS(TKey startKey)
     {
         var visitados = new HashSet<NodeGraph<TNodeGraphValue>>();
@@ -147,6 +164,7 @@ public class Graph<TKey, TNodeGraphValue>
 
         return resultado;
     }
+
     public List<TKey> DFS(TKey startKey)
     {
         var visitados = new HashSet<NodeGraph<TNodeGraphValue>>();
@@ -175,6 +193,9 @@ public class Graph<TKey, TNodeGraphValue>
         return resultado;
     }
 
+    #endregion
+
+    #region Buscar Camino
 
     public List<TKey> FindPathBFS(TKey startKey, TKey targetKey)
     {
@@ -211,11 +232,9 @@ public class Graph<TKey, TNodeGraphValue>
             }
         }
 
-        // Si no se encontró el target
         if (!parentMap.ContainsKey(targetNodeGraph) && startNodeGraph != targetNodeGraph)
             return path;
 
-        // Reconstruir el camino desde el target hacia el start
         var currentNodeGraph = targetNodeGraph;
         var NodeGraphToKey = NodeGraphs.ToDictionary(kvp => kvp.Value, kvp => kvp.Key);
 
@@ -227,4 +246,6 @@ public class Graph<TKey, TNodeGraphValue>
 
         return path;
     }
+
+    #endregion
 }

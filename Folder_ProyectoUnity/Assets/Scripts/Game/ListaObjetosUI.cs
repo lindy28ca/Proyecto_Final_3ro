@@ -4,18 +4,19 @@ using TMPro;
 
 public class ListaObjetosUI : MonoBehaviour
 {
-    [Header("Prefab del texto que se mostrará en la lista")]
+    #region Variables
+
     public GameObject textoPrefab;
-
-    [Header("Contenedor con Grid Layout Group (Image)")]
     public Transform contenedorLista;
-
-    [Header("Nombres de objetos recolectables")]
     public List<string> nombresObjetos = new List<string>();
 
     private Dictionary<string, TextMeshProUGUI> textosGenerados = new Dictionary<string, TextMeshProUGUI>();
 
-    void Start()
+    #endregion
+
+    #region Unity Methods
+
+    private void Start()
     {
         foreach (string nombre in nombresObjetos)
         {
@@ -25,6 +26,10 @@ public class ListaObjetosUI : MonoBehaviour
             textosGenerados[nombre] = texto;
         }
     }
+
+    #endregion
+
+    #region TacharObjeto
 
     public void TacharObjeto(string nombre)
     {
@@ -39,4 +44,6 @@ public class ListaObjetosUI : MonoBehaviour
             Debug.LogWarning("No se encontró el nombre en la lista: " + nombre);
         }
     }
+
+    #endregion
 }

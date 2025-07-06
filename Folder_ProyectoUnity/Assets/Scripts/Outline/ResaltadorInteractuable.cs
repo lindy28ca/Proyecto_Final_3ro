@@ -3,16 +3,25 @@ using MoreMountains.Feedbacks;
 
 public class ResaltadorInteractuable : MonoBehaviour
 {
-    private Light luz;
+    #region Variables
 
+    private Light luz;
     [SerializeField] private MMF_Player feedbackAlSeleccionar;
 
-    void Start()
+    #endregion
+
+    #region Unity Method
+
+    private void Start()
     {
         luz = GetComponentInChildren<Light>(true);
         if (luz != null)
             luz.enabled = false;
     }
+
+    #endregion
+
+    #region ActivarResaltado
 
     public void ActivarResaltado()
     {
@@ -22,10 +31,14 @@ public class ResaltadorInteractuable : MonoBehaviour
         if (feedbackAlSeleccionar != null)
             feedbackAlSeleccionar.PlayFeedbacks();
     }
+    #endregion
 
+    #region DesactivarResaltado
     public void DesactivarResaltado()
     {
         if (luz != null)
             luz.enabled = false;
     }
+
+    #endregion
 }

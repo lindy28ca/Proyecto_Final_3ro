@@ -2,14 +2,22 @@ using UnityEngine;
 
 public class ObjetoRecolectable : ObjectInteractive
 {
-    [Tooltip("Este nombre debe coincidir con el que está en la lista UI")]
+    #region Variable
+
     public string nombreObjeto;
+
+    #endregion
+
+    #region Unity Methods
 
     private void Start()
     {
         Debug.Log("Objeto activo en escena: " + nombreObjeto + " en posición " + transform.position);
     }
 
+    #endregion
+
+    #region Interacción
 
     protected override void Interaccion()
     {
@@ -34,4 +42,6 @@ public class ObjetoRecolectable : ObjectInteractive
 
         Destroy(gameObject);
     }
+
+    #endregion
 }

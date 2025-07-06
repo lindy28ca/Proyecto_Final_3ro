@@ -4,7 +4,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NuevoPuntos", menuName = "Datos/Puntos")]
 public class Puntos : ScriptableObject
 {
+    #region Variables
+
     [SerializeField] private List<int> puntos = new List<int>();
+
+    #endregion
+
+    #region Métodos Públicos
 
     public void AgregarPunto(int punto)
     {
@@ -16,6 +22,10 @@ public class Puntos : ScriptableObject
     {
         return new List<int>(puntos);
     }
+
+    #endregion
+
+    #region Métodos Privados
 
     private void InsertionSort(List<int> list)
     {
@@ -29,7 +39,10 @@ public class Puntos : ScriptableObject
                 list[j + 1] = list[j];
                 j--;
             }
+
             list[j + 1] = key;
         }
     }
+
+    #endregion
 }

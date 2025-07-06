@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class CamaraController : MonoBehaviour
 {
+    #region Variables
+
     [Header("Raycast")]
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private float distance = 5f;
@@ -10,6 +12,10 @@ public class CamaraController : MonoBehaviour
     private ObjectInteractive objectInteractive;
     private ResaltadorInteractuable resaltadorActual;
     private bool isInteractive = false;
+
+    #endregion
+
+    #region Unity Methods
 
     private void FixedUpdate()
     {
@@ -51,6 +57,7 @@ public class CamaraController : MonoBehaviour
             }
         }
     }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && objectInteractive != null)
@@ -63,10 +70,11 @@ public class CamaraController : MonoBehaviour
         }
     }
 
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(transform.position, transform.forward * distance);
     }
+
+    #endregion
 }

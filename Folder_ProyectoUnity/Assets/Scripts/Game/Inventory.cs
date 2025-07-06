@@ -4,12 +4,18 @@ using System.Collections.Generic;
 
 public class Inventory : MonoBehaviour
 {
+    #region Variables
+
     [SerializeField] private Image[] image;
     [SerializeField] private ItemsInformation[] itemInformation;
     [SerializeField] private Transform tarjet;
 
     private CircularDoubleLinkedList<ItemsInformation> listaCircular = new CircularDoubleLinkedList<ItemsInformation>();
     private Node<ItemsInformation> currentNode;
+
+    #endregion
+
+    #region Unity Methods
 
     private void Start()
     {
@@ -21,6 +27,13 @@ public class Inventory : MonoBehaviour
         currentNode = listaCircular.Head;
         UpdateImages();
     }
+
+    private void OnEnable() => InputReader.OnScroll += GetInputScroll;
+    private void OnDisable() => InputReader.OnScroll -= GetInputScroll;
+
+    #endregion
+
+    #region Inventario
 
     public void Add(ItemsInformation information)
     {
@@ -53,12 +66,34 @@ public class Inventory : MonoBehaviour
         return currentNode.Value.pinza == nombre;
     }
 
+    #endregion
+
+    #region Navegación
+
     private void Next() => currentNode = currentNode.Next;
     private void Previous() => currentNode = currentNode.Prev;
+
+    public void GetInputScroll(float valorInput)
+    {
+        if (listaCircular.Count <= 1) return;
+
+        currentNode.Value.ItemTranform.gameObject.SetActive(false);
+
+        if (valorInput < 0) Previous();
+        else if (valorInput > 0) Next();
+
+        currentNode.Value.ItemTranform.gameObject.SetActive(true);
+        UpdateImages();
+    }
+
+    #endregion
+
+    #region UI
 
     private void UpdateImages()
     {
         Node<ItemsInformation> tempNode = currentNode;
+
         for (int i = 0; i < image.Length; i++)
         {
             if (tempNode != null)
@@ -73,16 +108,5 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void GetInputScroll(float valorInput)
-    {
-        if (listaCircular.Count <= 1) return;
-        currentNode.Value.ItemTranform.gameObject.SetActive(false);
-        if (valorInput < 0) Previous();
-        else if (valorInput > 0) Next();
-        currentNode.Value.ItemTranform.gameObject.SetActive(true);
-        UpdateImages();
-    }
-
-    private void OnEnable() => InputReader.OnScroll += GetInputScroll;
-    private void OnDisable() => InputReader.OnScroll -= GetInputScroll;
+    #endregion
 }

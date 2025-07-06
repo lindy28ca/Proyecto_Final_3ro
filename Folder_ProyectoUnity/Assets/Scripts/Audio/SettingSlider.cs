@@ -4,6 +4,8 @@ using UnityEngine.Audio;
 
 public class SettingSlider : MonoBehaviour
 {
+    #region Variables
+
     [Header("Audio")]
     [SerializeField] private AudioMixer mainMixer;
     [SerializeField] private string key;
@@ -11,6 +13,10 @@ public class SettingSlider : MonoBehaviour
 
     [Header("Slider")]
     private Slider slider;
+
+    #endregion
+
+    #region Unity Methods
 
     private void Awake()
     {
@@ -24,10 +30,15 @@ public class SettingSlider : MonoBehaviour
         slider.value = Mathf.Clamp01(volume);
         UpdateValue(volume);
     }
+
     private void OnApplicationQuit()
     {
         PlayerPrefs.Save();
     }
+
+    #endregion
+
+    #region UpdateValue
 
     private void UpdateValue(float value)
     {
@@ -35,4 +46,6 @@ public class SettingSlider : MonoBehaviour
         mainMixer.SetFloat(key, Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat(key, volume);
     }
+
+    #endregion
 }
