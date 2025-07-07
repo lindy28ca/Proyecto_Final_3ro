@@ -4269,7 +4269,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -4.0004883}
+  m_AnchoredPosition: {x: 0, y: -4.0005493}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &326217647
@@ -22904,7 +22904,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4471515500332578439, guid: 56839ab7797ee8d469ee0099379fa342, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.7
+      value: -7.96
       objectReference: {fileID: 0}
     - target: {fileID: 4471515500332578439, guid: 56839ab7797ee8d469ee0099379fa342, type: 3}
       propertyPath: m_LocalPosition.y
@@ -22912,7 +22912,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4471515500332578439, guid: 56839ab7797ee8d469ee0099379fa342, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -43.5
+      value: -41.5
       objectReference: {fileID: 0}
     - target: {fileID: 4471515500332578439, guid: 56839ab7797ee8d469ee0099379fa342, type: 3}
       propertyPath: m_LocalRotation.w
@@ -24858,6 +24858,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 166.81587
       objectReference: {fileID: 0}
+    - target: {fileID: 3008167234947667120, guid: 56839ab7797ee8d469ee0099379fa342, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.7
+      objectReference: {fileID: 0}
     - target: {fileID: 3167000231755176576, guid: 56839ab7797ee8d469ee0099379fa342, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 83.37809
@@ -24972,7 +24976,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4471515500332578439, guid: 56839ab7797ee8d469ee0099379fa342, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.18
+      value: -13.79
       objectReference: {fileID: 0}
     - target: {fileID: 4471515500332578439, guid: 56839ab7797ee8d469ee0099379fa342, type: 3}
       propertyPath: m_LocalPosition.y
